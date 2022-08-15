@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gips.ourapp.SessionBean;
 
 /**
- * コントローラ(ログイン)
+ * コントローラ(ログイン) test1
  *
  * ログインのビューとサービスを制御する
  *
