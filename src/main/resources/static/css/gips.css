@@ -31,6 +31,18 @@ html, body {
 	line-height: 120px;
 }
 
+.interfaceList a {
+	text-decoration: none;
+}
+
+#linkLogin {
+	visibility: visible;
+}
+
+#linkLogout {
+	visibility: hidden;
+}
+
 #guestUser1 {
 	display: block;
 }
