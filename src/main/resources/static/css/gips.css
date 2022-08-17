@@ -15,10 +15,44 @@ html, body {
 	height: calc(100% - 101px);
 }
 
-.inputError{
-	background-color:#FFCC99
+.inputError {
+	background-color: #FFCC99
 }
 
-.selection{
+.selection {
 	padding-left: 2rem;
+}
+
+.interfaceList {
+	text-align: center;
+	margin-left: 20%;
+	margin-right: 20%;
+	font-size: 50px;
+	line-height: 120px;
+}
+
+#guestUser1 {
+	display: block;
+}
+
+#guestUser2 {
+	display: block;
+}
+
+#loginUser1 {
+	display: none;
+}
+
+#loginUser2 {
+	display: none;
+}
+
+.kakunin {
+	color: #FF3333;
+}
+
+footer {
+	width: 100%;
+	position: absolute; /*←絶対位置*/
+	bottom: 0; /*下に固定*/
 }
