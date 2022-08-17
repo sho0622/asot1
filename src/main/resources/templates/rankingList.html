@@ -22,19 +22,7 @@
 				<div class="col-3 text-left" id="logo">
 					<img src="./images/logo.png" height="40" alt="image">
 				</div>
-				<div class="collapse navbar-collapse navbar-collapse-4 col-md-6"
-					id="navbarNav01">
-					<ul class="navbar-nav justify-content-center">
-						<li class="nav-item nav-link"><a href="registUser.html">ユーザ登録</a></li>
-					</ul>
-				</div>
-				<div class="collapse navbar-collapse navbar-collapse-4 col-md-5"
-					id="navbarNav02">
-					<ul class="navbar-nav justify-content-center">
-						<li class="nav-item"><a class="nav-link" href="index.html"
-							id="linkLogout">ログアウト</a></li>
-					</ul>
-				</div>
+
 			</nav>
 		</div>
 	</header>
@@ -48,7 +36,7 @@
 			<!-- ここにHTMLをかく -->
 			<div class="row">
 				<div class="col">
-					<h1>ユーザ一覧</h1>
+					<h1>ランキング一覧</h1>
 				</div>
 			</div>
 
@@ -57,31 +45,29 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>#</th>
+							<th>順位</th>
 							<th>名前</th>
-							<th>メールアドレス</th>
+							<th>点数</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Gips 太郎</td>
-							<td>gips-taro@outlook.jp</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Gips 次郎</td>
-							<td>gips-jiro@outlook.jp</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Gips 花子</td>
-							<td>gips-hanako@outlook.jp</td>
-						</tr>
+
+							<tbody>
+						<tr data-th-each="form, elementStat : ${rankinglistForms}">
+						<td data-th-text="${form.rank}"></td>
+                          <td data-th-text="${form.name}"></td>
+                           <td data-th-text="${form.socre}"></td>
+                        </tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
+		<div class="collapse navbar-collapse navbar-collapse-4 col-md-5"
+					id="navbarNav01">
+					<ul class="navbar-nav justify-content-center">
+						<li class="nav-item"><a class="nav-link" href="index.html"
+							id="linkLogout">ログアウト</a></li>
+					</ul>
+				</div>
 	</section>
 
 	<!-- フッタ -->
