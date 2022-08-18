@@ -3,7 +3,9 @@
 <header class="bg-dark">
 	<nav class="navbar navbar-expand-md no-gutters">
 		<div>
-			<h1><a class="nav-link kakunin" href="/interface">理解度確認テスト</a></h1>
+			<h1>
+				<a class="nav-link kakunin" href="/">理解度確認テスト</a>
+			</h1>
 		</div>
 		<div>
 			<ul class="navbar-nav justify-content-center">
@@ -15,8 +17,6 @@
 	<script type="text/javascript" th:inline="javascript">
 		// ビューがロードされたら起動するイベントリスナー
 		window.addEventListener('load', function() {
-			// コンソール表示
-			console.log('起動しました');
 
 			// modelオブジェクトに追加したserNameの値を取得する
 			var name = /*[[${userName}]]*/
@@ -33,6 +33,9 @@
 
 			// セッションがnullでなければ
 			if (!(name == null)) {
+
+				// コンソール表示
+				console.log('起動しました');
 
 				// ゲストユーザ用のリンクを隠す
 				inversion1.style.visibility = "hidden";
