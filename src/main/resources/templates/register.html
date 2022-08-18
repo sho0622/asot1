@@ -55,8 +55,8 @@
 						<p class="lead">次の項目を入力してください。</p>
 					</div>
 				</div>
-				<form method="post" action="/" id="formid"
-					data-th-object="${registerForm}">
+				<form method="post" action="/registerUser" id="formid"
+					data-th-object="${userForm}">
 					<div class="row">
 						<div class="col mt-4">
 							<p>・ユーザーネーム</p>
@@ -81,7 +81,7 @@
 					<div class="row">
 						<div class="col mt-4">
 							<!-- ログインボタン押下時、インターフェース画面(ログインユーザ)へ遷移 -->
-							<button class="btn btn-secondary" type="button" id="btn">登録</button>
+							<button class="btn btn-secondary" type="submit" id="btn">登録</button>
 							<!-- 戻るボタン押下時、インターフェース画面(ゲストユーザ)へ遷移 -->
 							<button class="btn btn-secondary" type="button"
 								onclick="location.href='http://localhost:8080/'">戻る</button>
@@ -104,43 +104,42 @@
 			</div>
 		</div>
 	</footer>
-
 	<script>
 	const btn = document.getElementById('btn');
 
 	btn.addEventListener("click", function(e) {
 
-	 let inputName = document.getElementById("inputName").value;
- 	 let inputPassword1 = document.getElementById("inputPassword1").value;
- 	 let inputPassword2 = document.getElementById("inputPassword2").value;
+	 var inputName = document.getElementById("inputName").value;
+ 	 var inputPassword1 = document.getElementById("inputPassword1").value;
+ 	 var inputPassword2 = document.getElementById("inputPassword2").value;
 
  	 if(inputName.match(/[^A-Za-z0-9]+/)){
  	 	alert('半角英数字で入力してください');
  	 	document.getElementById("inputName").style.backgroundColor = 'red';
  	 }
- 	if(inputName=="" || inputName== null){
+ 	 else if(inputName=="" || inputName== null){
  	 	alert('入力していない項目があります');
  		 	document.getElementById("inputName").style.backgroundColor = 'red';
   	}
- 	if(inputPassword1=="" || inputPassword1== null ){
+ 	 else if(inputPassword1=="" || inputPassword1== null ){
  	 	alert('入力していない項目があります');
  		 	document.getElementById("inputPassword1").style.backgroundColor = 'red';
   	}
- 	if(inputPassword2=="" || inputPassword2== null){
+ 	 else if(inputPassword2=="" || inputPassword2== null){
  	 	alert('入力していない項目があります');
  		 	document.getElementById("inputPassword2").style.backgroundColor = 'red';
   	}
- 	if(inputPassword1.length >= 4 || inputPassword2.length >= 4){
+ 	 else if(inputPassword1.length <= 4 || inputPassword2.length<= 4){
  		alert('パスワードは4桁以上で入力してください');
  		document.getElementById("inputPassword1").style.backgroundColor ='red';
  		document.getElementById("inputPassword2").style.backgroundColor = 'red';
  	}
- 	if(inputPassword1.length <= 10 || inputPassword2.length <= 10){
+ 	 else if(inputPassword1.length >= 10 || inputPassword2.length >= 10){
  	 		alert('パスワードは10桁以内で入力してください');
  	 		document.getElementById("inputPassword1").style.backgroundColor ='red';
  	 		document.getElementById("inputPassword2").style.backgroundColor = 'red';
  	}
-	if(inputPassword1!=inputPassword2){
+ 	 else if(inputPassword1!=inputPassword2){
 		alert('パスワードが一致していません');
 		document.getElementById("inputPassword1").style.backgroundColor = 'red';
  		document.getElementById("inputPassword2").style.backgroundColor = 'red';
@@ -153,6 +152,7 @@
 
     });
  </script>
+
 
 </body>
 
