@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.gips.ourapp.forms.RegisterForm;
+import com.gips.ourapp.forms.UserForm;
 import com.gips.ourapp.services.RegisterService;
 
 /**
@@ -42,8 +42,8 @@ public class RegisterController {
 	String init(Model model) {
 
 		// ユーザ登録画面のFormをインスタンス化し、Modelに追加する。
-		RegisterForm form = new RegisterForm();
-		model.addAttribute("registerForm", form);
+		UserForm form = new UserForm();
+		model.addAttribute("userForm", form);
 
 		// ログイン画面のViewを返却する。
 		return "register";
@@ -59,7 +59,7 @@ public class RegisterController {
 	 */
 
 	@PostMapping("/registerUser")
-	public String register(@ModelAttribute RegisterForm form, Model model) {
+	public String register(@ModelAttribute UserForm form, Model model) {
 
 		// DB登録
 		service.register(form);
