@@ -10,7 +10,7 @@ import lombok.Data;
  *
  */
 @Data
-public class RegisterForm {
+public class UserForm {
 
 	// ユーザネーム
 	private String userName;
@@ -18,5 +18,7 @@ public class RegisterForm {
 	private String password1;
 	//パスワード(確認)
 	private String password2;
+	//正解数
+	private int correctNum;
 
 }
