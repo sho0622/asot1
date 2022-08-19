@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
 
 <head>
 <title>ランキング一覧</title>
@@ -16,15 +17,12 @@
 </head>
 
 <body>
-	<!-- ヘッダ -->
-	<header class="bg-dark">
-		<div class="headerfornt">
-		 <a>理解度確認テスト</a>
-			<nav class="navbar navbar-expand-md no-gutters">
-				</nav>
-				</div>
 
-	</header>
+	<div th:replace="header"></div>
+
+
+	<div th:replace="footer"></div>
+
 
 	<!-- メッセージ表示 -->
 	<div id="message_area"></div>
@@ -60,22 +58,19 @@
 				</table>
 			</div>
 			<div class="btn-all">
-			     <button onclick="location.href='./interface.html'">戻る</button>
+			     <button onclick="location.href='http://localhost:8080/'">戻る</button>
 </div>
 </div>
 
 	</section>
 	<!-- フッタ -->
-	<footer class="fdb-block footer-small bg-dark footer">
-		<div class="container">
-			<div class="row text-center">
-				<div class="col" id="copywrite">
-					<p>© 2019 Solid Communication Inc. All Rights Reserved</p>
-				</div>
+<footer class="footer-small bg-dark">
+	<div class="container">
+		<div class="row text-center">
+			<div class="col" id="copywrite">
+				<p>© 2019 Solid Communication Inc. All Rights Reserved</p>
 			</div>
 		</div>
-	</footer>
-
-</body>
-
+	</div>
+</footer>
 </html>
