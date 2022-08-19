@@ -25,8 +25,8 @@ public class QuestionService {
 	RegisterRepository registerRepository;
 	@Autowired
 	HttpSession session;
-	//@Autowired
-	//private SessionCheckService sessionCheck;
+	@Autowired
+	private SessionCheckService sessionService;
 
 
 	// ランダムに１０件取得するSQL
@@ -85,8 +85,9 @@ public class QuestionService {
 
 
 		// セッションを取得
-		//sessionCheck.sessionCheck(model);
+		sessionService.sessionCheck(model);
 		UserForm sform = (UserForm) session.getAttribute("form");
+
 		// セッションにログイン情報があればリストを表示
 		if (null != sform) {
 			RegisterEntity userInfo = registerRepository.findUserByUserName(sform.getUserName());
