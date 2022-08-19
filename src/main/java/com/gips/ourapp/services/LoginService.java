@@ -35,9 +35,6 @@ public class LoginService {
 	 */
 	public boolean login(UserForm form) {
 
-		//ユーザマスタからレコードを検索する
-		RegisterEntity entity = repository.findUserByUserName(form.getUserName());
-
 		// 引数の入力チェックを行う
 		// １つでもエラーがあった場合には、処理を異常終了する
 
@@ -60,6 +57,9 @@ public class LoginService {
 		if (form.getPassword1().length() <= 4) {
 			return false;
 		}
+
+		//ユーザマスタからレコードを検索する
+		RegisterEntity entity = repository.findUserByUserName(form.getUserName());
 
 		//レコードが１件も取得できなかった場合
 		if (entity == null) {

@@ -20,7 +20,7 @@ import com.gips.ourapp.services.SessionCheckService;
 @Controller
 public class LoginController {
 
-	// セッション
+	// セッションサービス
 	@Autowired
 	SessionCheckService session;
 
@@ -38,11 +38,7 @@ public class LoginController {
 	@RequestMapping("/login")
 	String init(Model model) {
 
-		// セッションの情報を取得して、ユーザ名をモデルに追加するメソッドを呼び出す
-		session.sessionCheck(model);
-
 		//ログインユーザーがアクセスした場合、/ にリダイレクトする。
-
 		String sessionService = session.sessionCheck(model);
 
 		if (sessionService != null) {
