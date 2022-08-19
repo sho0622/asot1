@@ -38,11 +38,7 @@ public class LoginController {
 	@RequestMapping("/login")
 	String init(Model model) {
 
-		// セッションの情報を取得
-		session.sessionCheck(model);
-
 		//ログインユーザーがアクセスした場合、/ にリダイレクトする。
-
 		String sessionService = session.sessionCheck(model);
 
 		if (sessionService != null) {
