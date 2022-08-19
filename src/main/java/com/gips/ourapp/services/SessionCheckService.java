@@ -15,17 +15,21 @@ public class SessionCheckService {
 	@Autowired
 	HttpSession session;
 
-	public void sessionCheck(Model model) {
+	public String sessionCheck(Model model) {
 
 		// インスタンス化
 		UserForm sessionForm = new UserForm();
 
+		String name ="";
+
 		// セッションの情報を取得
 		sessionForm = (UserForm) session.getAttribute("form");
 		// 情報があれば、ユーザ名をモデルに追加
-		if (!(sessionForm == null)) {
-			String name = "ID：" + sessionForm.getUserName();
+		if (sessionForm != null) {
+			name = "ID：" + sessionForm.getUserName();
 			model.addAttribute("userName", name);
 		}
+
+		return name;
 	}
 }
