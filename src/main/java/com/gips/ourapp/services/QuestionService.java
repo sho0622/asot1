@@ -101,9 +101,5 @@ public class QuestionService {
 
 		model.addAttribute("scoreMsg", scoreMsg);
 
-		// native queryのupdate文だとエラーが出た。
-		// String username = userInfo.getUser_name();
-		// userRepository.updateScore(score, username);// スコア記録
-
 	}
 }
