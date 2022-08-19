@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.gips.ourapp.forms.QuestionForm;
 import com.gips.ourapp.forms.UserForm;
 import com.gips.ourapp.services.QuestionService;
+import com.gips.ourapp.services.SessionCheckService;
 
 @Controller
 public class QuestionController {
 	@Autowired
 	private QuestionService service;
+	@Autowired
+	private SessionCheckService session;
 
 	// 採点でも使えるようにメンバ変数にListを設定
 	List<QuestionForm> rList = new ArrayList<>();
@@ -49,7 +52,7 @@ public class QuestionController {
 		// 返り値の正解数をスコアに入れる。 for文はRequestParamでは使えないので１０問分記述する。
 		score += service.setAnswer(answer1, rList.get(0), model);
 		score += service.setAnswer(answer2, rList.get(1), model);
-		// score += service.setAnswer(answer3, rList.get(2), model);
+		score += service.setAnswer(answer3, rList.get(2), model);
 		// score += service.setAnswer(answer4, rList.get(3), model);
 		// score += service.setAnswer(answer5, rList.get(4), model);
 		// score += service.setAnswer(answer6, rList.get(5), model);

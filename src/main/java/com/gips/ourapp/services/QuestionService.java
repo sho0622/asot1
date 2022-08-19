@@ -16,6 +16,7 @@ import com.gips.ourapp.forms.UserForm;
 import com.gips.ourapp.repositories.QuestionRepository;
 import com.gips.ourapp.repositories.RegisterRepository;
 
+
 @Service
 public class QuestionService {
 	@Autowired
@@ -24,6 +25,9 @@ public class QuestionService {
 	RegisterRepository registerRepository;
 	@Autowired
 	HttpSession session;
+	@Autowired
+	private SessionCheckService sessionCheck;
+
 
 	// ランダムに１０件取得するSQL
 	public List<QuestionEntity> findQuestion() {
@@ -79,7 +83,9 @@ public class QuestionService {
 	// 正解数をDBに保存
 	public void setScore(int score, UserForm form, String scoreMsg, Model model) {
 
+
 		// セッションを取得
+		sessionCheck.sessionCheck(model);
 		UserForm sform = (UserForm) session.getAttribute("form");
 		// セッションにログイン情報があればリストを表示
 		if (null != sform) {
