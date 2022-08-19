@@ -62,9 +62,3 @@ html, body {
 .kakunin {
 	color: #FF3333;
 }
-
-footer {
-	width: 100%;
-	position: absolute; /*←絶対位置*/
-	bottom: 0; /*下に固定*/
-}
