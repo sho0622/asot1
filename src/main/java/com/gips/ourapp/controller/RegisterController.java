@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gips.ourapp.forms.UserForm;
 import com.gips.ourapp.services.RegisterService;
+import com.gips.ourapp.services.SessionCheckService;
 
 /**
  * コントローラ(ユーザ登録画面)
@@ -21,6 +22,8 @@ import com.gips.ourapp.services.RegisterService;
  * ユーザ登録画面のビューとサービスを制御する
  *
  */
+
+
 @Controller
 public class RegisterController {
 
@@ -31,6 +34,9 @@ public class RegisterController {
 	@Autowired
 	RegisterService service;
 
+	@Autowired
+	private SessionCheckService sessionService;
+
 	/**
 	 * ユーザ登録画面初期表示
 	 * ルートにGETでアクセスされた際に呼び出されるメソッド
@@ -40,10 +46,12 @@ public class RegisterController {
 	 */
 	@RequestMapping("/register")
 	String init(Model model) {
+		sessionService.sessionCheck(model);
 
 		// ユーザ登録画面のFormをインスタンス化し、Modelに追加する。
 		UserForm form = new UserForm();
 		model.addAttribute("registerForm", form);
+
 
 		// ログイン画面のViewを返却する。
 		return "register";
