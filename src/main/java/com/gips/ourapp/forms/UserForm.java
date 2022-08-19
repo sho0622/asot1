@@ -12,6 +12,7 @@ import lombok.Data;
 @Data
 public class UserForm {
 
+	private Integer userId;
 	// ユーザネーム
 	private String userName;
 	// パスワード
