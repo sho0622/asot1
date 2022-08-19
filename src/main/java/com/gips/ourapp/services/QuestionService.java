@@ -85,12 +85,12 @@ public class QuestionService {
 
 
 		// セッションを取得
-		sessionService.sessionCheck(model);
-		UserForm sform = (UserForm) session.getAttribute("form");
+		String sessionName  =  sessionService.sessionCheck(model);
+		//UserForm sform = (UserForm) session.getAttribute("form");
 
 		// セッションにログイン情報があればリストを表示
-		if (null != sform) {
-			RegisterEntity userInfo = registerRepository.findUserByUserName(sform.getUserName());
+		if (null != sessionName) {
+			RegisterEntity userInfo = registerRepository.findUserByUserName(sessionName);
 
 			// 最高得点を上回ったら更新
 			if (userInfo.getCorrectNum() < score) {
