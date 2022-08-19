@@ -50,13 +50,13 @@ public class RegisterService {
 		} else
 
 		//半角英数字以外の文字が入力された場合
-		if (!form.getUserName().matches("[0-9a-zA-Z]") || !form.getPassword1().matches("[0-9a-zA-Z]")
-				|| !form.getPassword2().matches("[0-9a-zA-Z]")) {
+		if (form.getUserName().matches("^[0-9a-zA-Z]+$") || form.getPassword1().matches("^[0-9a-zA-Z]+$")
+				|| form.getPassword2().matches("^[0-9a-zA-Z]+$")) {
 			return false;
 		} else
 
 		//パスワードとパスワード(確認)が不一致の場合
-		if (!form.getPassword1().equals(form.getPassword2())) {
+		if (!(form.getPassword1().equals(form.getPassword2()))) {
 			return false;
 		} else
 
@@ -88,9 +88,9 @@ public class RegisterService {
 			// JPAのsaveメソッドを呼び出してDB登録
 			repository.save(entity);
 
-			// 処理を正常終了する
-			return true;
 		}
 
+		// 処理を正常終了する
+		return true;
 	}
 }

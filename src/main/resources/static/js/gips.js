@@ -1,1 +1,1 @@
-// ‚±‚±‚ÉJavaScript‚ÌƒR[ƒh‚ð‘‚­
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JavaScriptï¿½ÌƒRï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½

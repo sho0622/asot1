@@ -43,7 +43,7 @@ public class RegisterController {
 
 		// ユーザ登録画面のFormをインスタンス化し、Modelに追加する。
 		UserForm form = new UserForm();
-		model.addAttribute("userForm", form);
+		model.addAttribute("registerForm", form);
 
 		// ログイン画面のViewを返却する。
 		return "register";
