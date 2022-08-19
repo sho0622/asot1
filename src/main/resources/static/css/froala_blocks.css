@@ -1130,6 +1130,10 @@ fieldset:disabled a.btn {
   .btn-block + .btn-block {
     margin-top: 0.5rem; }
 
+.btn-all{
+  text-align: right;
+}
+
 input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
@@ -1146,6 +1150,7 @@ input[type="button"].btn-block {
 
 .shadow-none {
   box-shadow: none !important; }
+
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
