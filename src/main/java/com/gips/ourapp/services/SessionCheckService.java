@@ -24,7 +24,7 @@ public class SessionCheckService {
 		sessionForm = (UserForm) session.getAttribute("form");
 		// 情報があれば、ユーザ名をモデルに追加
 		if (sessionForm != null) {
-			String name = "ID：" + sessionForm.getUserName();
+			String name = sessionForm.getUserName();
 			model.addAttribute("userName", name);
 
 			return name;

@@ -16,20 +16,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.gips.ourapp.forms.QuestionForm;
 import com.gips.ourapp.forms.UserForm;
 import com.gips.ourapp.services.QuestionService;
+import com.gips.ourapp.services.SessionCheckService;
 //import com.gips.ourapp.services.SessionCheckService;
 
 @Controller
 public class QuestionController {
 	@Autowired
 	private QuestionService service;
-	//@Autowired
-	//private SessionCheckService session;
+	@Autowired
+	private SessionCheckService sessionCheck;
 
 	// 採点でも使えるようにメンバ変数にListを設定
 	List<QuestionForm> rList = new ArrayList<>();
 
 	@RequestMapping("/questions")
 	String questions(Model model) {
+
+		sessionCheck.sessionCheck(model);
 
 		// 問題をランダムで10件取得してList型でリターンされる
 		List<QuestionForm> qList = service.setQuestion();
