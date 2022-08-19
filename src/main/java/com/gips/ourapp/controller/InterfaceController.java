@@ -39,7 +39,6 @@ public class InterfaceController {
 		// セッションの情報を取得して、ユーザ名をモデルに追加するメソッドを呼び出す
 		service.sessionCheck(model);
 
-
 		// ビューを返却する
 		return "interface";
 	}
