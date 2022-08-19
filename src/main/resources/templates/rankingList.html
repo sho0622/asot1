@@ -2,10 +2,11 @@
 <html>
 
 <head>
-<title>Gipsラーニングシステム</title>
+<title>ランキング一覧</title>
 <meta charset="utf-8" name="viewport"
 	content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
 <!-- CSSの読み込み -->
+
 <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="./css/froala_blocks.css">
 <link type="text/css" rel="stylesheet" href="./css/gips.css">
@@ -17,14 +18,12 @@
 <body>
 	<!-- ヘッダ -->
 	<header class="bg-dark">
-		<div class="container">
+		<div class="headerfornt">
+		 <a>理解度確認テスト</a>
 			<nav class="navbar navbar-expand-md no-gutters">
-				<div class="col-3 text-left" id="logo">
-					<img src="./images/logo.png" height="40" alt="image">
+				</nav>
 				</div>
 
-			</nav>
-		</div>
 	</header>
 
 	<!-- メッセージ表示 -->
@@ -52,24 +51,20 @@
 					</thead>
 
 							<tbody>
-						<tr data-th-each="form, elementStat : ${rankinglistForms}">
+						<tr data-th-each="form: ${rankinglistForms}">
 						<td data-th-text="${form.rank}"></td>
                           <td data-th-text="${form.name}"></td>
-                           <td data-th-text="${form.socre}"></td>
+                           <td data-th-text="${form.score}"></td>
                         </tr>
 					</tbody>
 				</table>
 			</div>
-		</div>
-		<div class="collapse navbar-collapse navbar-collapse-4 col-md-5"
-					id="navbarNav01">
-					<ul class="navbar-nav justify-content-center">
-						<li class="nav-item"><a class="nav-link" href="index.html"
-							id="linkLogout">ログアウト</a></li>
-					</ul>
-				</div>
-	</section>
+			<div class="btn-all">
+			     <button onclick="location.href='./interface.html'">戻る</button>
+</div>
+</div>
 
+	</section>
 	<!-- フッタ -->
 	<footer class="fdb-block footer-small bg-dark footer">
 		<div class="container">

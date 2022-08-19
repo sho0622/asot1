@@ -1,4 +1,4 @@
-package com.gips.ourapp.entity;
+package com.gips.ourapp.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,10 +20,6 @@ public class rankingEntity {
 	@Column(name = "user_name")
 	private String name;
 
-	//ユーザーID
-	@Column(name = "user_id")
-	private String id;
-
 	//ユーザーパスワード
 	@Column(name = "password")
 	private String password;
@@ -31,4 +27,5 @@ public class rankingEntity {
 	//正解点数
 	@Column(name = "correct_num")
 	private int score;
+
 }
