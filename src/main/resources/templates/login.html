@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Webエクササイズ</title>
+<title>ログイン</title>
 <meta charset="utf-8" name="viewport"
 	content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
 <!-- CSSの読み込み -->
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<!-- ヘッダ -->
+	<!-- ヘッダ 共通なので後で書き換える -->
 	<header class="bg-dark">
 		<div class="container">
 			<nav class="navbar navbar-expand-md no-gutters">
@@ -47,37 +47,34 @@
 		<div class="container my-5">
 
 			<!-- ここにHTMLをかく -->
-			<form method="post" action="/" data-th-object="${form}">
+			<form method="post" action="/loginUser" data-th-object="${userForm}"
+				id="formid">
 				<div class=" row justify-content-center">
 					<div class="col-12 col-md-8 col-lg-6 col-xl-5 text-left">
 						<div class="row">
 							<div class="col">
 								<h1>ログイン</h1>
-								<p class="lead">ユーザIDとパスワードを入力してください。</p>
+								<p class="lead">ユーザネームとパスワードを入力してください。</p>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col mt-4">
-								<input type="text" class="form-control"
-									data-th-field="*{userId}" placeholder="ユーザID">
+								<input type="text" class="form-control" id="inputName"
+									data-th-field="*{userName}" placeholder="ユーザネーム">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col mt-4">
-								<input type="password" class="form-control"
-									data-th-field="*{password}" placeholder="パスワード">
+								<input type="password" class="form-control" id="inputPassword"
+									data-th-field="*{password1}" placeholder="パスワード">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col mt-4">
-								<input type="checkbox" name="checkLogin" id="loginInfoSave">
-								<label for="loginInfoSave" class="checkbox-inline">ログイン情報を保存する</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col mt-4">
-								<button class="btn btn-secondary" type="submit"
-									>ログイン</button>
+								<button id="btn" class="btn btn-secondary" type="submit">ログイン</button>
+
+								<button class="btn btn-secondary" type="button"
+									onclick="location.href='http://localhost:8080/'">戻る</button>
 							</div>
 						</div>
 					</div>
@@ -87,7 +84,38 @@
 		</div>
 	</section>
 
-	<!-- フッタ -->
+	<script>
+
+	const btn = document.getElementById('btn');
+
+	btn.addEventListener("click", function(e) {
+
+	 let inputName = document.getElementById("inputName").value;
+ 	 let inputPassword = document.getElementById("inputPassword").value;
+
+ 	 if(inputName.match(/[^A-Za-z0-9]+/)){
+ 	 	alert('半角英数字で入力してください');
+ 	 	document.getElementById("inputName").style.backgroundColor = 'red';
+ 	 }
+ 	 else if(inputName=="" || inputName== null){
+ 	 	alert('入力していない項目があります');
+ 		 	document.getElementById("inputName").style.backgroundColor = 'red';
+  	}
+ 	 else if(inputPassword=="" || inputPassword== null ){
+ 	 	alert('入力していない項目があります');
+ 		 	document.getElementById("inputPassword").style.backgroundColor = 'red';
+  	}
+ 	else {
+
+ 		document.localtion.href ="http://localhost:8080/";
+ 	}
+
+    });
+
+   </script>
+
+
+	<!-- フッタ 共通なので後で書き換える -->
 	<footer class="fdb-block footer-small bg-dark footer">
 		<div class="container">
 			<div class="row text-center">

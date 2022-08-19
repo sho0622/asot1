@@ -19,5 +19,4 @@ import lombok.Data;
 @Data
 public class SessionBean implements Serializable {
 
-	String systemName = "模擬試験Webアプリ";
 }

@@ -1,4 +1,4 @@
-package com.gips.ourapp.login;
+package com.gips.ourapp.forms;
 
 import lombok.Data;
 
@@ -11,8 +11,8 @@ import lombok.Data;
 @Data
 public class LoginForm {
 
-	// ユーザID
-	private String userId;
+	// ユーザネーム
+	private String userName;
 	// パスワード
 	private String password;
 
