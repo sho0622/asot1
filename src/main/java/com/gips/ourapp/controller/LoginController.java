@@ -1,7 +1,5 @@
 package com.gips.ourapp.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gips.ourapp.forms.UserForm;
 import com.gips.ourapp.services.LoginService;
+import com.gips.ourapp.services.SessionCheckService;
 
 /**
  * コントローラ(ログイン画面)
@@ -23,7 +22,7 @@ public class LoginController {
 
 	// セッション
 	@Autowired
-	HttpSession session;
+	SessionCheckService session;
 
 	// 認証サービス
 	@Autowired
@@ -39,10 +38,16 @@ public class LoginController {
 	@RequestMapping("/login")
 	String init(Model model) {
 
-		/*ログインユーザーがアクセスした場合、/ にリダイレクトする。
-		if() {
+		// セッションの情報を取得して、ユーザ名をモデルに追加するメソッドを呼び出す
+		session.sessionCheck(model);
+
+		//ログインユーザーがアクセスした場合、/ にリダイレクトする。
+
+		String sessionService = session.sessionCheck(model);
+
+		if (sessionService != null) {
 			return "redirect:";
-		}*/
+		}
 
 		// ログイン画面のFormをインスタンス化し、Modelに追加する。
 		UserForm form = new UserForm();
