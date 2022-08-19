@@ -21,8 +21,6 @@
 	<div th:replace="header"></div>
 
 
-	<div th:replace="footer"></div>
-
 
 	<!-- メッセージ表示 -->
 	<div id="message_area"></div>
@@ -64,13 +62,5 @@
 
 	</section>
 	<!-- フッタ -->
-<footer class="footer-small bg-dark">
-	<div class="container">
-		<div class="row text-center">
-			<div class="col" id="copywrite">
-				<p>© 2019 Solid Communication Inc. All Rights Reserved</p>
-			</div>
-		</div>
-	</div>
-</footer>
+<div th:replace="footer"></div>
 </html>
