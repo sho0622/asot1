@@ -56,7 +56,7 @@
 					</div>
 				</div>
 				<form method="post" action="/registerUser" id="formid"
-					data-th-object="${userForm}">
+					data-th-object="${registerForm}">
 					<div class="row">
 						<div class="col mt-4">
 							<p>・ユーザーネーム</p>
@@ -68,14 +68,14 @@
 						<div class="col mt-4">
 							<p>・パスワード</p>
 							<input type="password" data-th-field="*{password1}"
-								id="inputPassword1" class="form-control" placeholder="password">
+								id="inputPassword1" class="form-control" placeholder="4～10文字">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col mt-4">
 							<p>・パスワード(確認)</p>
 							<input type="password" data-th-field="*{password2}"
-								id="inputPassword2" class="form-control" placeholder="password">
+								id="inputPassword2" class="form-control" placeholder="4～10文字">
 						</div>
 					</div>
 					<div class="row">
@@ -93,18 +93,7 @@
 		</div>
 	</section>
 
-
-	<!-- フッタ 共通なので後で書き換える -->
-	<footer class="fdb-block footer-small bg-dark footer">
-		<div class="container">
-			<div class="row text-center">
-				<div class="col" id="copywrite">
-					<p>© 2019 Solid Communication Inc. All Rights Reserved</p>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<script>
+		<script>
 	const btn = document.getElementById('btn');
 
 	btn.addEventListener("click", function(e) {
@@ -130,12 +119,12 @@
  		 	document.getElementById("inputPassword2").style.backgroundColor = 'red';
   	}
  	 else if(inputPassword1.length <= 4 || inputPassword2.length<= 4){
- 		alert('パスワードは4桁以上で入力してください');
+ 		alert('パスワードは4文字以上で入力してください');
  		document.getElementById("inputPassword1").style.backgroundColor ='red';
  		document.getElementById("inputPassword2").style.backgroundColor = 'red';
  	}
  	 else if(inputPassword1.length >= 10 || inputPassword2.length >= 10){
- 	 		alert('パスワードは10桁以内で入力してください');
+ 	 		alert('パスワードは10文字以内で入力してください');
  	 		document.getElementById("inputPassword1").style.backgroundColor ='red';
  	 		document.getElementById("inputPassword2").style.backgroundColor = 'red';
  	}
@@ -144,14 +133,26 @@
 		document.getElementById("inputPassword1").style.backgroundColor = 'red';
  		document.getElementById("inputPassword2").style.backgroundColor = 'red';
 
-	}
- 	else {
+	}else {
 
- 	document.getElementById("formid").submit();
+		alert('ログイン');
  	}
 
     });
  </script>
+
+
+	<!-- フッタ 共通なので後で書き換える -->
+	<footer class="fdb-block footer-small bg-dark footer">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col" id="copywrite">
+					<p>© 2019 Solid Communication Inc. All Rights Reserved</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
 
 
 </body>
