@@ -47,8 +47,13 @@ public class RegisterController {
 	@RequestMapping("/register")
 	String init(Model model) {
 
-		// セッションの情報を取得して、ユーザ名をモデルに追加するメソッドを呼び出す
-		sessionService.sessionCheck(model);
+		//ログインユーザーがアクセスした場合、/ にリダイレクトする。
+		String sService =sessionService.sessionCheck(model);
+
+		if (sService != null) {
+			return "redirect:";
+		}
+
 
 		// ユーザ登録画面のFormをインスタンス化し、Modelに追加する。
 		UserForm form = new UserForm();
