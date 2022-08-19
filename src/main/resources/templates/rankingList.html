@@ -2,10 +2,11 @@
 <html>
 
 <head>
-<title>Gipsラーニングシステム</title>
+<title>ランキング一覧</title>
 <meta charset="utf-8" name="viewport"
 	content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
 <!-- CSSの読み込み -->
+
 <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
 <link type="text/css" rel="stylesheet" href="./css/froala_blocks.css">
 <link type="text/css" rel="stylesheet" href="./css/gips.css">
@@ -17,26 +18,12 @@
 <body>
 	<!-- ヘッダ -->
 	<header class="bg-dark">
-		<div class="container">
+		<div class="headerfornt">
+		 <a>理解度確認テスト</a>
 			<nav class="navbar navbar-expand-md no-gutters">
-				<div class="col-3 text-left" id="logo">
-					<img src="./images/logo.png" height="40" alt="image">
+				</nav>
 				</div>
-				<div class="collapse navbar-collapse navbar-collapse-4 col-md-6"
-					id="navbarNav01">
-					<ul class="navbar-nav justify-content-center">
-						<li class="nav-item nav-link"><a href="registUser.html">ユーザ登録</a></li>
-					</ul>
-				</div>
-				<div class="collapse navbar-collapse navbar-collapse-4 col-md-5"
-					id="navbarNav02">
-					<ul class="navbar-nav justify-content-center">
-						<li class="nav-item"><a class="nav-link" href="index.html"
-							id="linkLogout">ログアウト</a></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
+
 	</header>
 
 	<!-- メッセージ表示 -->
@@ -48,7 +35,7 @@
 			<!-- ここにHTMLをかく -->
 			<div class="row">
 				<div class="col">
-					<h1>ユーザ一覧</h1>
+					<h1>ランキング一覧</h1>
 				</div>
 			</div>
 
@@ -57,33 +44,27 @@
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th>#</th>
+							<th>順位</th>
 							<th>名前</th>
-							<th>メールアドレス</th>
+							<th>点数</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>Gips 太郎</td>
-							<td>gips-taro@outlook.jp</td>
-						</tr>
-						<tr>
-							<th scope="row">2</th>
-							<td>Gips 次郎</td>
-							<td>gips-jiro@outlook.jp</td>
-						</tr>
-						<tr>
-							<th scope="row">3</th>
-							<td>Gips 花子</td>
-							<td>gips-hanako@outlook.jp</td>
-						</tr>
+
+							<tbody>
+						<tr data-th-each="form: ${rankinglistForms}">
+						<td data-th-text="${form.rank}"></td>
+                          <td data-th-text="${form.name}"></td>
+                           <td data-th-text="${form.score}"></td>
+                        </tr>
 					</tbody>
 				</table>
 			</div>
-		</div>
-	</section>
+			<div class="btn-all">
+			     <button onclick="location.href='./interface.html'">戻る</button>
+</div>
+</div>
 
+	</section>
 	<!-- フッタ -->
 	<footer class="fdb-block footer-small bg-dark footer">
 		<div class="container">
