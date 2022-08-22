@@ -22,14 +22,17 @@ public class SessionCheckService {
 
 		// セッションの情報を取得
 		sessionForm = (UserForm) session.getAttribute("form");
+
 		// 情報があれば、ユーザ名をモデルに追加
 		if (sessionForm != null) {
 			String name = sessionForm.getUserName();
 			model.addAttribute("userName", name);
 
+			// 戻り値を返す
 			return name;
 		}
 
+		// 戻り値を返す
 		return null;
 	}
 }
