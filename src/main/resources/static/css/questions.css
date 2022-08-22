@@ -1,0 +1,47 @@
+td, th {
+	padding: 10px;
+	text-align: center;
+}
+
+.dispNone {
+	visibility: hidden;
+}
+
+html, body {
+	height: 100%;
+}
+
+.sectionHeight {
+	height: calc(100% - 101px);
+}
+
+.inputError{
+	background-color:#FFCC99
+}
+
+.selection{
+	padding-left: 2rem;
+}
+
+HTML CSS JSResult Skip Results Iframe
+EDIT ON
+
+/*バリデーション*/
+.help-block{
+  font-size:14px;
+  margin-left: 10px;
+}
+/*エラー時*/
+.has-error input, .has-error textarea{
+  border: 1px solid #ff4d4b;
+}
+.has-error .help-block, .has-error label{
+  color: #ff4d4b;
+}
+/*サクセス時*/
+.has-success input, .has-success textarea{
+  border: 1px solid #2fb4ce;
+}
+.has-success .help-block, .has-success label{
+  color: #2fb4ce;
+}
