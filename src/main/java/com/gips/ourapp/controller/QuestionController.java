@@ -53,20 +53,20 @@ public class QuestionController {
 		String scoreMsg = "";
 		int score = 0;
 		// 返り値の正解数をスコアに入れる。 for文はRequestParamでは使えないので１０問分記述する。
-		score += service.setAnswer(answer1, rList.get(0), model);
-		score += service.setAnswer(answer2, rList.get(1), model);
-		score += service.setAnswer(answer3, rList.get(2), model);
-		score += service.setAnswer(answer4, rList.get(3), model);
-		score += service.setAnswer(answer5, rList.get(4), model);
-		score += service.setAnswer(answer6, rList.get(5), model);
-		score += service.setAnswer(answer7, rList.get(6), model);
-		score += service.setAnswer(answer8, rList.get(7), model);
-		score += service.setAnswer(answer9, rList.get(8), model);
-		score += service.setAnswer(answer10, rList.get(9), model);
+		score += service.checkAnswer(answer1, rList.get(0), model);
+		score += service.checkAnswer(answer2, rList.get(1), model);
+		score += service.checkAnswer(answer3, rList.get(2), model);
+		score += service.checkAnswer(answer4, rList.get(3), model);
+		score += service.checkAnswer(answer5, rList.get(4), model);
+		score += service.checkAnswer(answer6, rList.get(5), model);
+		score += service.checkAnswer(answer7, rList.get(6), model);
+		score += service.checkAnswer(answer8, rList.get(7), model);
+		score += service.checkAnswer(answer9, rList.get(8), model);
+		score += service.checkAnswer(answer10, rList.get(9), model);
 
 		scoreMsg = score + "問正解です。";
 		// スコアを更新する処理
-		service.setScore(score, form, scoreMsg, model);
+		service.checkScore(score, form, scoreMsg, model);
 
 		// debug = "debug:" + rList;
 		model.addAttribute("ListForms", rList);
