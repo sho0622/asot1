@@ -35,7 +35,7 @@ public class QuestionService {
 	}
 
 	// ランダムに１０件取得して、Listでリターンする
-	public List<QuestionForm> setQuestion() {
+	public List<QuestionForm> makeQuestion() {
 
 		// 可変長配列にランダムで10問のカラムを代入
 		List<QuestionEntity> qInfos = findQuestion();

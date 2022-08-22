@@ -35,7 +35,7 @@ public class QuestionController {
 		sessionCheck.sessionCheck(model);
 
 		// 問題をランダムで10件取得してList型でリターンされる
-		List<QuestionForm> qList = service.setQuestion();
+		List<QuestionForm> qList = service.makeQuestion();
 		// 採点結果にデータを渡すためメンバ変数に代入
 		rList = qList;
 
@@ -52,7 +52,7 @@ public class QuestionController {
 		// String debug = "";
 		String scoreMsg = "";
 		int score = 0;
-		// 返り値の正解数をスコアに入れる。 for文はRequestParamでは使えないので１０問分記述する。
+		// 返り値の正解数をscoreに入れる。 for文はRequestParamでは使えないので１０問分記述する。
 		score += service.checkAnswer(answer1, rList.get(0), model);
 		score += service.checkAnswer(answer2, rList.get(1), model);
 		score += service.checkAnswer(answer3, rList.get(2), model);
