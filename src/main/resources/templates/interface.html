@@ -13,21 +13,35 @@
 <script type="text/javascript" src="./js/bootstrap.min.js" defer="defer"></script>
 </head>
 <body>
-
+	<!-- 共通ヘッダ -->
 	<div th:replace="header"></div>
 
 	<div class="container">
 		<ul class="navbar-nav justify-content-center interfaceList">
-			<li id="loginUser1"><a data-th-text="${userName}"></a></li>
+			<!-- ログイン中ユーザ名 -->
+			<li id="loginUser1"><span>ユーザネーム：</span><a data-th-text="${userName}"></a></li>
+
+			<!-- ログイン画面遷移リンク -->
 			<li id="guestUser1"><a href="/login">ログイン</a></li>
+
+			<!-- インターフェース画面遷移リンク(セッション削除) -->
 			<li id="loginUser2"><a href="/logout">ログアウト</a></li>
+
+			<!-- 新規登録画面遷移リンク -->
 			<li id="guestUser2"><a href="/register">新規登録</a></li>
+
+			<!-- 出題画面遷移リンク -->
 			<li><a href="/questions">解答スタート</a></li>
+
+			<!-- ランキング画面遷移リンク -->
 			<li><a href="/ranking">ランキング</a></li>
 		</ul>
 	</div>
+
+	<!-- 共通フッタ -->
 	<div th:replace="footer"></div>
 </body>
+
 <script th:inline="javascript" type="text/javascript">
 	// ビューがロードされたら起動するイベントリスナー
 	window.addEventListener('load', function() {
