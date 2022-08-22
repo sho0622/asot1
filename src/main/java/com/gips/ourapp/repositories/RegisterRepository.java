@@ -17,7 +17,7 @@ import com.gips.ourapp.entities.RegisterEntity;
  */
 public interface RegisterRepository extends JpaRepository<RegisterEntity, String> {
 
-	// ユーザテーブルから指定されたユーザネームのレコードを取得するメソッド
+	// ユーザテーブルから指定されたユーザ名のレコードを取得するメソッド
 	@Query(value = "select * from m_user where user_name = ?1", nativeQuery = true)
 	RegisterEntity findUserByUserName(String userName);
 

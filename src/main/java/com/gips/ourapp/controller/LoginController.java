@@ -38,18 +38,18 @@ public class LoginController {
 	@RequestMapping("/login")
 	String init(Model model) {
 
-		//ログインユーザーがアクセスした場合、/ にリダイレクトする。
+		//ログインユーザがアクセスした場合、/ にリダイレクトする
 		String sessionService = session.sessionCheck(model);
 
 		if (sessionService != null) {
 			return "redirect:";
 		}
 
-		// ログイン画面のFormをインスタンス化し、Modelに追加する。
+		// ログイン画面のフォームをインスタンス化し、モデルに追加する
 		UserForm form = new UserForm();
 		model.addAttribute("userForm", form);
 
-		// ログイン画面のViewを返却する。
+		// ログイン画面のビューを返却する
 		return "login";
 	}
 
@@ -64,14 +64,14 @@ public class LoginController {
 	@PostMapping("/loginUser")
 	String loginUser(@ModelAttribute UserForm form, Model model) {
 
-		// 認証サービスを呼び出す。
-		// 結果が正常ではなかった場合にはログイン画面のViewを返却して処理を終了する。
-		if (!service.login(form)) {
+		// 認証サービスを呼び出す
+		// 結果が正常ではなかった場合にはログイン画面のビューを返却して処理を終了する
+		if (!service.login(form, model)) {
 			model.addAttribute("form", form);
 			return "login";
 		}
 
-		// インターフェース画面をリダイレクトする。
+		// インターフェース画面をリダイレクトする
 		return "redirect:";
 	}
 
