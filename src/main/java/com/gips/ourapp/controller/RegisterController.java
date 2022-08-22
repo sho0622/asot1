@@ -47,7 +47,7 @@ public class RegisterController {
 	@RequestMapping("/register")
 	String init(Model model) {
 
-		//ログインユーザーがアクセスした場合、/ にリダイレクトする。
+		//ログインユーザがアクセスした場合、/ にリダイレクトする
 		String sService =sessionService.sessionCheck(model);
 
 		if (sService != null) {
@@ -55,11 +55,11 @@ public class RegisterController {
 		}
 
 
-		// ユーザ登録画面のFormをインスタンス化し、Modelに追加する。
+		// ユーザ登録画面のフォームをインスタンス化し、モデルに追加する
 		UserForm form = new UserForm();
-		model.addAttribute("registerForm", form);
+		model.addAttribute("userForm", form);
 
-		// ログイン画面のViewを返却する。
+		// ログイン画面のビューを返却する
 		return "register";
 	}
 
@@ -76,19 +76,21 @@ public class RegisterController {
 	public String register(@ModelAttribute UserForm form, Model model) {
 
 		// DB登録
-		boolean result = service.register(form);
+		boolean result = service.register(form, model);
 
 		// フォームクラスをモデルに追加
 		model.addAttribute("form", form);
 
 		if (result) {
-			//情報をsessionに保存する
+			//情報をセッションに保存する
 			session.setAttribute("form", form);
 		} else {
-			return "redirect:register";
+			// 結果が正常ではなかった場合にはユーザ登録画面のビューを返却して処理を終了する
+			model.addAttribute("form", form);
+			return "register";
 		}
 
-		// インターフェース画面をリダイレクトする。
+		// インターフェース画面をリダイレクトする
 		return "redirect:";
 	}
 
