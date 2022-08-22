@@ -3,11 +3,13 @@ $(document).ready(function () {
 
     $("form").submit(function () {
         let form_g = $('.form-group1');
+         // ラジオボタンのvalueがundefinedならエラーメッセージを出す
         if ($('input[name="answer1"]:checked').val() === undefined) {
             form_g.removeClass('has-success').addClass('has-error');
             form_g.find('.help-block').text(REQUIRE);
             return false;
         } else {
+        	// 正常ならエラーを消す
             form_g.removeClass('has-error').addClass('has-success');
             form_g.find('.help-block').text('');
         }
@@ -120,7 +122,6 @@ $(document).ready(function () {
             form_g.find('.help-block').text('');
         }
     });
-
 
 });
 

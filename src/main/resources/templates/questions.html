@@ -20,8 +20,9 @@
 <body>
 	<div th:replace="header"></div>
 	<div class="offset-2 col-8">
+		<!--  余白用 -->
 		<div class="card-body">
-			<h4 class="card-title">理解度確認テスト</h4>
+
 		</div>
 	</div>
 
@@ -31,8 +32,11 @@
 			<div class="card w-100 border-primary">
 				<div class="card-body">
 					<form action="/result" method="POST">
+						<!-- 拡張for文でList型のメンバ変数を展開する（インデックス用にiも入れる） -->
                         <div data-th-each="form, i : ${ListForms}">
+                        	<!--  問題文を表示 -->
                             <p class="mt-3" data-th-text="Q + ${i.count} + ' ' + ${form.question}"></p>
+                            <!--  選択肢を表示 -->
                             <div th:class="form-group + ${i.count}">
 	                            <p class="help-block"></p>
 	                            <input type=radio th:name="answer + ${i.count}" th:value="${form.choice1}" data-th-text="${form.choice1}">
@@ -51,6 +55,7 @@
 	</div>
 
 	<div class="offset-2 col-8">
+		<!--  余白用 -->
 		<div class="card-body">
 
 		</div>

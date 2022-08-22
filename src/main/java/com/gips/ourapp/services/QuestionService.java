@@ -59,16 +59,20 @@ public class QuestionService {
 		return qList;
 	}
 
-	// リクエストされた正誤をチェック
-	public int setAnswer(String answer, QuestionForm rList, Model model) {
+	// リクエストされた解答の正誤をチェック
+	public int checkAnswer(String answer, QuestionForm rList, Model model) {
 		int score = 0;
+		// メンバ変数 rListをFormに代入
 		QuestionForm rInfo = rList;
+		// RequestParamをFormのanswerに代入
 		rInfo.setAnswer(answer);
+		// 正解の時の記述
 		if (rInfo.getCorrect().equals(answer)) {
 			String msg = "正解〇";
 			rInfo.setRight(msg);
 			score += 1;
 		} else {
+			// 不正解の時の記述
 			String msg = "不正解× 正解は";
 			msg += rInfo.getCorrect();
 			rInfo.setWrong(msg);
@@ -81,8 +85,7 @@ public class QuestionService {
 	}
 
 	// 正解数をDBに保存
-	public void setScore(int score, UserForm form, String scoreMsg, Model model) {
-
+	public void checkScore(int score, UserForm form, String scoreMsg, Model model) {
 
 		// セッションを取得
 		String sessionName  =  sessionService.sessionCheck(model);
