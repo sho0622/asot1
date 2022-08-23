@@ -37,6 +37,8 @@ public class InterfaceController {
 	String home(Model model) {
 
 		// セッションの情報を取得して、ユーザ名をモデルに追加するメソッドを呼び出す
+		// sessionCheckメソッドは戻り値としてString型となっているがインターフェース画面では
+		// モデルの追加が必要なので、戻り値は変数に代入しない
 		service.sessionCheck(model);
 
 		// ビューを返却する
@@ -55,7 +57,7 @@ public class InterfaceController {
 		// セッションの情報を削除
 		session.invalidate();
 
-		// ビューを返却する
+		// インターフェース画面をリダイレクトする
 		return "redirect:/";
 	}
 }
