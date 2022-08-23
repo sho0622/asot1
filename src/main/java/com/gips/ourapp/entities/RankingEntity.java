@@ -13,7 +13,7 @@ import lombok.Data;
 @Table(name = "m_user")
 @Data
 
-public class rankingEntity {
+public class RankingEntity {
 
 	@Id
 	//ユーザー名前

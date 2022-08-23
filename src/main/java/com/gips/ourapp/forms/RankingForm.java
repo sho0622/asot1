@@ -4,7 +4,7 @@ package com.gips.ourapp.forms;
 import lombok.Data;
 
 @Data
-public class rankingForm {
+public class RankingForm {
 
         private int rank ;
 		private String name;
