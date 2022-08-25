@@ -16,7 +16,6 @@ import com.gips.ourapp.forms.UserForm;
 import com.gips.ourapp.repositories.QuestionRepository;
 import com.gips.ourapp.repositories.RegisterRepository;
 
-
 @Service
 public class QuestionService {
 	@Autowired
@@ -28,17 +27,16 @@ public class QuestionService {
 	@Autowired
 	private SessionCheckService sessionService;
 
-
 	// ランダムに１０件取得するSQL
-	public List<QuestionEntity> findQuestion() {
-		return questionRepository.findQuestion();
-	}
+	//	public List<QuestionEntity> findQuestion() {
+	//		return questionRepository.findQuestion();
+	//	}
 
 	// ランダムに１０件取得して、Listでリターンする
 	public List<QuestionForm> makeQuestion() {
 
 		// 可変長配列にランダムで10問のカラムを代入
-		List<QuestionEntity> qInfos = findQuestion();
+		List<QuestionEntity> qInfos = questionRepository.findQuestion();
 
 		// 空の可変長配列を用意
 		List<QuestionForm> qList = new ArrayList<>();
@@ -56,39 +54,41 @@ public class QuestionService {
 			qform.setChoice4(qInfo.getChoice4());
 			qList.add(qform);
 		}
+
 		return qList;
 	}
 
 	// リクエストされた解答の正誤をチェック
 	public int checkAnswer(String answer, QuestionForm rList, Model model) {
 		int score = 0;
-		// メンバ変数 rListをFormに代入
-		QuestionForm rInfo = rList;
+
 		// RequestParamをFormのanswerに代入
-		rInfo.setAnswer(answer);
+		rList.setAnswer(answer);
 		// 正解の時の記述
-		if (rInfo.getCorrect().equals(answer)) {
+		if (rList.getCorrect().equals(answer)) {
 			String msg = "正解〇";
-			rInfo.setRight(msg);
+			// Formのrightに記述
+			rList.setRight(msg);
 			score += 1;
 		} else {
 			// 不正解の時の記述
 			String msg = "不正解× 正解は";
-			msg += rInfo.getCorrect();
-			rInfo.setWrong(msg);
+			msg += rList.getCorrect();
+			// Formのwrongに記述
+			rList.setWrong(msg);
 		}
 
-		// 第一引数はタイムリーフで使う文字列
+		// 第一引数はタイムリーフで使う文字列, for文で処理できないのでここでmodelを処理することにした
 		model.addAttribute(answer, answer);
 		// 正解数を返す
 		return score;
 	}
 
 	// 正解数をDBに保存
-	public void checkScore(int score, UserForm form, String scoreMsg, Model model) {
+	public String checkScore(int score, UserForm form, Model model) {
 
 		// セッションを取得
-		String sessionName  =  sessionService.sessionCheck(model);
+		String sessionName = sessionService.sessionCheck(model);
 		//UserForm sform = (UserForm) session.getAttribute("form");
 
 		// セッションにログイン情報があればリストを表示
@@ -99,11 +99,11 @@ public class QuestionService {
 			if (userInfo.getCorrectNum() < score) {
 				userInfo.setCorrectNum(score);
 				registerRepository.save(userInfo);
-				scoreMsg += "　最高得点を更新しました。";
+				String updateMsg = "　最高得点を更新しました。";
+				return updateMsg;
 			}
 		}
-
-		model.addAttribute("scoreMsg", scoreMsg);
+		return "";
 
 	}
 }
