@@ -62,7 +62,7 @@ public class QuestionService {
 	public int checkAnswer(String answer, QuestionForm rList, Model model) {
 		int score = 0;
 
-		// RequestParamをFormのanswerに代入
+		// amswerをFormのanswerに代入
 		rList.setAnswer(answer);
 		// 正解の時の記述
 		if (rList.getCorrect().equals(answer)) {
