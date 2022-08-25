@@ -15,7 +15,7 @@ public class AnswerForm {
 	private String answer8;
 	private String answer9;
 	private String answer10;
-// コンストラクタを作成したがうまくいかなかった
+// コンストラクタを作成したが使えなかった
 //	AnswerForm() {
 //		this.answer[0] = "answer1";
 //		this.answer[1] = "answer2";
