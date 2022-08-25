@@ -45,6 +45,7 @@ public class QuestionController {
 		return "questions";
 	}
 
+	@SuppressWarnings("unchecked")
 	@PostMapping("/result")
 	public String result(AnswerForm aform, UserForm uform,Model model) {
 
