@@ -12,15 +12,15 @@ const btn = document.getElementById('btn');
  	 	document.getElementById("inputName").style.backgroundColor = 'red';
  	 }
  	 if(inputName=="" || inputName== null){
- 	 	alert('入力していない項目があります');
+ 	 	alert('空欄があります');
  		 	document.getElementById("inputName").style.backgroundColor = 'red';
   	}
  	 if(inputPassword1=="" || inputPassword1== null ){
- 	 	alert('入力していない項目があります');
+ 	 	alert('空欄があります');
  		 	document.getElementById("inputPassword1").style.backgroundColor = 'red';
   	}
  	 if(inputPassword2=="" || inputPassword2== null){
- 	 	alert('入力していない項目があります');
+ 	 	alert('空欄があります');
  		 	document.getElementById("inputPassword2").style.backgroundColor = 'red';
   	}
  	 if(inputPassword1.length < 4 || inputPassword2.length< 4){

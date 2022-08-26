@@ -11,11 +11,11 @@ const btn = document.getElementById('btn');
  	 	document.getElementById("inputName").style.backgroundColor = 'red';
  	 }
  	 if(inputName=="" || inputName== null){
- 	 	alert('入力していない項目があります');
+ 	 	alert('空欄があります');
  		 	document.getElementById("inputName").style.backgroundColor = 'red';
   	}
  	 if(inputPassword=="" || inputPassword== null ){
- 	 	alert('入力していない項目があります');
+ 	 	alert('空欄があります');
  		 	document.getElementById("inputPassword").style.backgroundColor = 'red';
   	}
 

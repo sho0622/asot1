@@ -6,8 +6,11 @@ package com.gips.ourapp.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,20 +81,31 @@ public class RegisterController {
 		// DB登録
 		boolean result = service.register(form, model);
 
-		// フォームクラスをモデルに追加
-		model.addAttribute("form", form);
-
-		if (result) {
-			//情報をセッションに保存する
-			session.setAttribute("form", form);
-		} else {
+		if (!result) {
 			// 結果が正常ではなかった場合にはユーザ登録画面のビューを返却して処理を終了する
 			model.addAttribute("form", form);
 			return "register";
 		}
 
+		//情報をセッションに保存する
+		session.setAttribute("form", form);
 		// インターフェース画面をリダイレクトする
 		return "redirect:";
+	}
+
+	// サーバエラー時の処理
+	@ExceptionHandler(DataAccessException.class)
+	public String dataAccessExceptionHandler(DataAccessException e, Model model) {
+		// 例外クラスのメッセージをModelに登録
+		model.addAttribute("error", "内部サーバーエラー（DB）：ExceptionHandler");
+
+		// 例外クラスのメッセージをModelに登録
+		model.addAttribute("message", "サーバエラーが発生しました。時間をおいてからアクセスして下さい");
+
+		// HTTPのエラーコード（500）をModelに登録
+		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		return "error";
 	}
 
 }
