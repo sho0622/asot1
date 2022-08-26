@@ -61,7 +61,7 @@ public class RegisterService {
 
 		//パスワードとパスワード(確認)が不一致の場合
 		if (!(form.getPassword1().equals(form.getPassword2()))) {
-			msg = "パスワードが間違っています";
+			msg = "パスワードが一致していません";
 			model.addAttribute("msg", msg);
 			return false;
 		}
@@ -69,7 +69,7 @@ public class RegisterService {
 		//10文字以上の場合
 		if (form.getUserName().length() > 10 || form.getPassword1().length() > 10
 				|| form.getPassword2().length() > 10) {
-			msg = "パスワードは10文字以内で入力してください";
+			msg = "10文字以内で入力してください";
 			model.addAttribute("msg", msg);
 			return false;
 		}
