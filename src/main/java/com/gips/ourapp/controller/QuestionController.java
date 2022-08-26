@@ -1,5 +1,6 @@
 package com.gips.ourapp.controller;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,8 @@ public class QuestionController {
 
 	@SuppressWarnings("unchecked")
 	@PostMapping("/result")
-	public String result(AnswerForm aform, UserForm uform,Model model) {
+	public String result(AnswerForm aform, UserForm uform, Model model)
+			throws ReflectiveOperationException, SecurityException {
 
 		// String debug = "";
 		String scoreMsg = "";
@@ -56,19 +58,23 @@ public class QuestionController {
 		List<QuestionForm> rList = new ArrayList<>();
 		rList = (List<QuestionForm>) session.getAttribute("sessionForm");
 
-		// String answer[] = aform.getAnswer();
+		// リフレクションで動的に処理
+		StringBuilder sb = new StringBuilder();
+		for (int i = 1; i <= rList.size(); i++) {
+			//	メソッドを定義 i=1 のとき、callMethod は "getAnswer1"
+			String callMethod = sb.append("getAnswer").append(String.format("%d", i)).toString();
+			Method method = aform.getClass().getMethod(callMethod);
+			// メソッドを文字列にする
+			String answer = String.valueOf(method.invoke(aform));
+			score += service.checkAnswer(answer, rList.get(i - 1), model);
 
-		// 返り値の正解数をscoreに入れる。 配列ではリクエストは処理できないのでfor文は使えない
-		score += service.checkAnswer(aform.getAnswer1(), rList.get(0), model);
-		score += service.checkAnswer(aform.getAnswer2(), rList.get(1), model);
-		score += service.checkAnswer(aform.getAnswer3(), rList.get(2), model);
-		score += service.checkAnswer(aform.getAnswer4(), rList.get(3), model);
-		score += service.checkAnswer(aform.getAnswer5(), rList.get(4), model);
-		score += service.checkAnswer(aform.getAnswer6(), rList.get(5), model);
-		score += service.checkAnswer(aform.getAnswer7(), rList.get(6), model);
-		score += service.checkAnswer(aform.getAnswer8(), rList.get(7), model);
-		score += service.checkAnswer(aform.getAnswer9(), rList.get(8), model);
-		score += service.checkAnswer(aform.getAnswer10(), rList.get(9), model);
+			// 消して初期化
+			callMethod +=  sb.delete(0, sb.length());
+
+			// 第一引数はタイムリーフで使う文字列, for文で処理できないのでここでmodelを処理することにした
+			model.addAttribute("answer"+i, answer);
+
+		}
 
 		scoreMsg = score + "問正解です。";
 		// スコアを更新する処理

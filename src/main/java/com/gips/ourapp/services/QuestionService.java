@@ -62,7 +62,7 @@ public class QuestionService {
 	public int checkAnswer(String answer, QuestionForm rList, Model model) {
 		int score = 0;
 
-		// amswerをFormのanswerに代入
+		// answrをFormのanswerに代入
 		rList.setAnswer(answer);
 		// 正解の時の記述
 		if (rList.getCorrect().equals(answer)) {
@@ -77,9 +77,9 @@ public class QuestionService {
 			// Formのwrongに記述
 			rList.setWrong(msg);
 		}
-
-		// 第一引数はタイムリーフで使う文字列, for文で処理できないのでここでmodelを処理することにした
-		model.addAttribute(answer, answer);
+//
+//		// 第一引数はタイムリーフで使う文字列, for文で処理できないのでここでmodelを処理することにした
+		// model.addAttribute("answer1", answer);
 		// 正解数を返す
 		return score;
 	}
