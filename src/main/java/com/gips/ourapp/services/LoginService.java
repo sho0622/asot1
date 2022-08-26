@@ -57,14 +57,14 @@ public class LoginService {
 
 		//10文字以上の場合
 		if (form.getUserName().length() > 10 || form.getPassword1().length() > 10) {
-			msg = "パスワードは10文字以内で入力してください";
+			msg = "ログインできませんでした";
 			model.addAttribute("msg", msg);
 			return false;
 		}
 
 		//4文字以下の場合(パスワード)
 		if (form.getPassword1().length() < 4) {
-			msg = "パスワードは4文字以上で入力してください";
+			msg = "ログインできませんでした";
 			model.addAttribute("msg", msg);
 			return false;
 		}
