@@ -59,20 +59,22 @@ public class QuestionController {
 		rList = (List<QuestionForm>) session.getAttribute("sessionForm");
 
 		// リフレクションで動的に処理
-		StringBuilder sb = new StringBuilder();
+
 		for (int i = 1; i <= rList.size(); i++) {
+			StringBuilder sb = new StringBuilder();
 			//	メソッドを定義 i=1 のとき、callMethod は "getAnswer1"
 			String callMethod = sb.append("getAnswer").append(String.format("%d", i)).toString();
 			Method method = aform.getClass().getMethod(callMethod);
 			// メソッドを文字列にする
 			String answer = String.valueOf(method.invoke(aform));
+			// サービスを呼び出し、引数にメソッドを使用
 			score += service.checkAnswer(answer, rList.get(i - 1), model);
 
-			// 消して初期化
-			callMethod +=  sb.delete(0, sb.length());
+			// 消して初期化(初期化しないとanswer1anser2() と追記されて表示される)
+			callMethod += sb.delete(0, sb.length());
 
 			// 第一引数はタイムリーフで使う文字列, for文で処理できないのでここでmodelを処理することにした
-			model.addAttribute("answer"+i, answer);
+			model.addAttribute("answer" + i, answer);
 
 		}
 
